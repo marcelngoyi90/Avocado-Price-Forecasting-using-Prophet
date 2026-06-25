@@ -1,52 +1,46 @@
-# Avocado Price Forecasting using Prophet
+# Avocado Price Forecasting with Prophet
 
-## Overview
-This project applies **Facebook Prophet, a powerful open-source time series forecasting library, to predict avocado prices over time.  
-The goal is to model historical market data and generate reliable forecasts to understand future pricing trends in the avocado market.
+A time-series project that uses Prophet to explore historical avocado-price patterns and generate future forecasts.
 
----
+## Objective
+
+The project investigates market trends, seasonality, and the future trajectory of average avocado prices across United States regions.
 
 ## Dataset
-The dataset used in this project is **[Avocado Prices dataset](https://www.kaggle.com/neuromusic/avocado-prices)**.  
-It contains information on average avocado prices and sales volume across multiple U.S. regions.
 
-**Key Columns:**
-- `Date` — Date of observation  
-- `AveragePrice` — Average price of a single avocado  
-- `region` — Geographical market region  
-- `type` — Conventional or organic avocados  
-- `Total Volume` — Total number of avocados sold  
+The analysis uses the [Avocado Prices dataset](https://www.kaggle.com/neuromusic/avocado-prices), including:
 
----
+- `Date` — observation date;
+- `AveragePrice` — average price of one avocado;
+- `region` — geographic market;
+- `type` — conventional or organic;
+- `Total Volume` — total units sold.
 
-##Exploratory Data Analysis (EDA)
-Before modeling, the data was explored to uncover trends and patterns:
-- Visualized **average price trends** over time  
-- Counted the number of entries by **region** and **year**  
-- Checked for **missing values** and data consistency  
+## Workflow
 
-These insights helped prepare the data for Prophet and provided intuition about market behavior.
+1. Inspect data quality and visualize historical patterns.
+2. Parse and aggregate the price series.
+3. Rename the time and target columns to Prophet's `ds` and `y`.
+4. Fit a Prophet model.
+5. Generate forecasts with uncertainty intervals.
+6. Inspect trend and seasonal components.
 
----
+## Technology
 
-##  Methodology
-1. **Data Preprocessing**
-   - Sorted data by date  
-   - Selected the relevant columns (`Date`, `AveragePrice`)  
-   - Renamed columns for Prophet (`ds` and `y`)  
+- Python
+- Pandas and NumPy
+- Prophet
+- Matplotlib and Plotly
+- Jupyter Notebook
 
-2. **Model Building**
-   - Implemented **Facebook Prophet** for time series forecasting  
-   - Trained the model on historical price data  
-   - Generated future predictions for a defined forecast horizon  
+## Interpretation
 
-3. **Forecast Visualization**
-   - Plotted actual vs. predicted values  
-   - Visualized Prophet’s trend, weekly, and yearly seasonal components  
+A visually plausible forecast is not sufficient evidence of predictive quality. A production-oriented version should use time-based validation and compare Prophet with simpler baselines.
 
----
+## Next steps
 
-##  Results
-- Prophet effectively captured the **seasonal trends** and **overall price trajectory**.  
-- The model can be used to predict future avocado prices based on historical data.  
-- Forecast plots clearly show cyclical patterns in the avocado market.
+- report MAE, RMSE, or MAPE on a held-out time period;
+- compare against naive, seasonal-naive, and ARIMA baselines;
+- model regions and avocado types separately;
+- document the forecast horizon and confidence intervals;
+- package the model in an interactive application.
